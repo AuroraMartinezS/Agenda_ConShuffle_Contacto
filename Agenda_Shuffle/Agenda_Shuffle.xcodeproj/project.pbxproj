@@ -14,6 +14,8 @@
 		FB122FEE2D6F7C0A00CD005A /* PantallaAgenda.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB122FED2D6F7C0A00CD005A /* PantallaAgenda.swift */; };
 		FB122FF12D6F7FC300CD005A /* contacto_preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB122FF02D6F7FC300CD005A /* contacto_preview.swift */; };
 		FB122FF42D6F871500CD005A /* contacto_agenda.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB122FF32D6F871500CD005A /* contacto_agenda.swift */; };
+		FB9DA8432D7618CE00859DC7 /* pantalla_agregar_contacto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9DA8422D7618CE00859DC7 /* pantalla_agregar_contacto.swift */; };
+		FB9DA8452D761C4300859DC7 /* Icono.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9DA8442D761C4300859DC7 /* Icono.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		FB122FED2D6F7C0A00CD005A /* PantallaAgenda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantallaAgenda.swift; sourceTree = "<group>"; };
 		FB122FF02D6F7FC300CD005A /* contacto_preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contacto_preview.swift; sourceTree = "<group>"; };
 		FB122FF32D6F871500CD005A /* contacto_agenda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contacto_agenda.swift; sourceTree = "<group>"; };
+		FB9DA8422D7618CE00859DC7 /* pantalla_agregar_contacto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pantalla_agregar_contacto.swift; sourceTree = "<group>"; };
+		FB9DA8442D761C4300859DC7 /* Icono.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icono.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,7 @@
 		FB122FDE2D6F797D00CD005A /* Agenda_Shuffle */ = {
 			isa = PBXGroup;
 			children = (
+				FB9DA8412D7618A900859DC7 /* pantallas */,
 				FB122FF22D6F85AE00CD005A /* modelos */,
 				FB122FEF2D6F7F6600CD005A /* componentes */,
 				FB122FDF2D6F797D00CD005A /* Agenda_ShuffleApp.swift */,
@@ -80,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				FB122FF02D6F7FC300CD005A /* contacto_preview.swift */,
+				FB9DA8442D761C4300859DC7 /* Icono.swift */,
 			);
 			path = componentes;
 			sourceTree = "<group>";
@@ -90,6 +96,14 @@
 				FB122FF32D6F871500CD005A /* contacto_agenda.swift */,
 			);
 			path = modelos;
+			sourceTree = "<group>";
+		};
+		FB9DA8412D7618A900859DC7 /* pantallas */ = {
+			isa = PBXGroup;
+			children = (
+				FB9DA8422D7618CE00859DC7 /* pantalla_agregar_contacto.swift */,
+			);
+			path = pantallas;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,8 +179,10 @@
 				FB122FE22D6F797D00CD005A /* ContentView.swift in Sources */,
 				FB122FF12D6F7FC300CD005A /* contacto_preview.swift in Sources */,
 				FB122FF42D6F871500CD005A /* contacto_agenda.swift in Sources */,
+				FB9DA8452D761C4300859DC7 /* Icono.swift in Sources */,
 				FB122FEE2D6F7C0A00CD005A /* PantallaAgenda.swift in Sources */,
 				FB122FE02D6F797D00CD005A /* Agenda_ShuffleApp.swift in Sources */,
+				FB9DA8432D7618CE00859DC7 /* pantalla_agregar_contacto.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

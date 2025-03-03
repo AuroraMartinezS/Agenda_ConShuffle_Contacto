@@ -38,10 +38,54 @@ struct PantallaAgenda: View {
                     
                 }
             }
+            .frame(alignment: Alignment.center)
+            .padding(10)
             .background(Color.cyan)
-            .frame(width: largo, alignment: Alignment.center)
         }
+        .background(Color.indigo)
         
+        HStack(alignment: VerticalAlignment.center, spacing: 25){
+            ZStack{
+                Circle()
+                    .frame(width: 100)
+                    .foregroundStyle(.orange)
+                Circle()
+                    .frame(width: 65, height: 65)
+                    .foregroundStyle(.mint)
+                Image(systemName: "plus")
+                    .foregroundStyle(.indigo)
+                    //.offset(x: 0, y: -25)
+            }
+            .padding(15)
+            .onTapGesture {
+                print("Falta implementar esta parte")
+            }
+            
+            Spacer();
+            
+            ZStack{
+                Circle()
+                    .frame(width: 100)
+                    .foregroundStyle(.orange)
+                Circle()
+                    .frame(width: 65, height: 65)
+                    .foregroundStyle(.mint)
+                Image(systemName: "shuffle")
+                    .foregroundStyle(.indigo)
+                    //.offset(x: 0, y: -25)
+            }
+            .padding(15)
+            .onTapGesture {
+                print("Lanzar un intend para iniciar la llamada")
+            }
+            
+            /*Text("Obtener persona a molestar")
+                .onTapGesture {
+                    print("")
+                }*/
+            //Image(systemName: "plus.circle.fill")
+            
+        }
     }
 }
 
