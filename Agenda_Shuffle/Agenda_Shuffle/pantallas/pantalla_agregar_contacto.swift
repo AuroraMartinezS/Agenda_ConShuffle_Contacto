@@ -19,40 +19,47 @@ struct Pantalla_Agregar_Contacto: View {
     }
     
     var body: some View {
-        Text("Colocar la etiqueta de nombre")
-        TextField("Ingrese el nombre", text: $nombre)
-            //.textFieldStyle(.roundedBorder)
-            .padding(10)
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.orange)
-            )
         
-        Text("Colocar el campo del número telefónico")
-        TextField("Ingrese el número de teléfono", text: $numero_telefonico)
-            .padding(10)
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.orange)
-            )
-        
-        HStack{
-            Icono(tamaño: 40, ruta_icono: "person.fill.badge.plus", padding: 10)
-                .foregroundStyle(.indigo)
-                .onTapGesture {
-                    boton_agregar(nombre, numero_telefonico)
-                }
-            Spacer()
-            Icono(tamaño: 40, ruta_icono: "return")
-                .foregroundStyle(.indigo)
-                .background(nombre == "" ? Color.red: Color.orange)
-                .onTapGesture {
-                    boton_salir()
-                }
-            //operador ternario; la primera variable de Color es por es la condición es verdad, la segunda por si es falsa.
+        VStack(spacing: 20){
+            
+            Text("Colocar la etiqueta de nombre")
+            TextField("Ingrese el nombre", text: $nombre)
+                //.textFieldStyle(.roundedBorder)
+                .padding(10)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.orange)
+                )
+            
+            Text("Colocar el campo del número telefónico")
+            TextField("Ingrese el número de teléfono", text: $numero_telefonico)
+                .padding(10)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.orange)
+                )
+            
+            HStack{
+                Icono(tamaño: 40, ruta_icono: "person.fill.badge.plus", padding: 10)
+                    .foregroundStyle(.indigo)
+                    .onTapGesture {
+                        boton_agregar(nombre, numero_telefonico)
+                    }
+                Spacer()
+                Icono(tamaño: 40, ruta_icono: "return")
+                    .foregroundStyle(.indigo)
+                    .background(nombre == "" ? Color.red: Color.orange)
+                    .onTapGesture {
+                        boton_salir()
+                    }
+                //operador ternario; la primera variable de Color es por es la condición es verdad, la segunda por si es falsa.
 
-        }
-        .background(Color.mint)
+            }
+            .background(Color.mint)
+            
+        }.padding(30)
+        
+       
         
     }
 }

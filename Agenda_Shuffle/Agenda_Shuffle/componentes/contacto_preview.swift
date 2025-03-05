@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-let contacto_prueba = ContactoAgenda(nombre: "sdfsdfsdfdsf", telefono: "09876543")
+let contacto_prueba = ContactoAgenda(nombre: "Nombre", telefono: "Teléfono")
 
 struct ContactoPrevista: View {
     var contacto_a_mostrar: ContactoAgenda
@@ -32,10 +32,12 @@ struct ContactoPrevista: View {
             
             VStack(alignment: HorizontalAlignment.leading, spacing: 5){
                 Text(contacto_a_mostrar.nombre)
+                    .font(.system(size: 18, weight: .heavy))
                 Text(contacto_a_mostrar.telefono)
             }
+            .padding(10)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(Color.purple)
+            //.background(Color.purple)
             
             
             Spacer()

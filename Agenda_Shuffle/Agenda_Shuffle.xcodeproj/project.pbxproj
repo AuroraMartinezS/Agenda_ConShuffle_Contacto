@@ -16,6 +16,7 @@
 		FB122FF42D6F871500CD005A /* contacto_agenda.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB122FF32D6F871500CD005A /* contacto_agenda.swift */; };
 		FB9DA8432D7618CE00859DC7 /* pantalla_agregar_contacto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9DA8422D7618CE00859DC7 /* pantalla_agregar_contacto.swift */; };
 		FB9DA8452D761C4300859DC7 /* Icono.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9DA8442D761C4300859DC7 /* Icono.swift */; };
+		FBD46D442D78BCF700FAE764 /* pantalla_del_ganador.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD46D432D78BCF700FAE764 /* pantalla_del_ganador.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		FB122FF32D6F871500CD005A /* contacto_agenda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contacto_agenda.swift; sourceTree = "<group>"; };
 		FB9DA8422D7618CE00859DC7 /* pantalla_agregar_contacto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pantalla_agregar_contacto.swift; sourceTree = "<group>"; };
 		FB9DA8442D761C4300859DC7 /* Icono.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icono.swift; sourceTree = "<group>"; };
+		FBD46D432D78BCF700FAE764 /* pantalla_del_ganador.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pantalla_del_ganador.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				FB9DA8422D7618CE00859DC7 /* pantalla_agregar_contacto.swift */,
+				FBD46D432D78BCF700FAE764 /* pantalla_del_ganador.swift */,
 			);
 			path = pantallas;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB122FE22D6F797D00CD005A /* ContentView.swift in Sources */,
+				FBD46D442D78BCF700FAE764 /* pantalla_del_ganador.swift in Sources */,
 				FB122FF12D6F7FC300CD005A /* contacto_preview.swift in Sources */,
 				FB122FF42D6F871500CD005A /* contacto_agenda.swift in Sources */,
 				FB9DA8452D761C4300859DC7 /* Icono.swift in Sources */,

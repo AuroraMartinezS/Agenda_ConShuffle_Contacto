@@ -26,6 +26,8 @@ struct PantallaAgenda: View {
     var ancho = UIScreen.main.bounds.height
     
     @State var mostrar_pantalla_agregar_contacto: Bool = false;
+    @State var mostrar_pantalla_shuffle: Bool = false;
+    
     @State var contactos_actuales: [ContactoAgenda] = [
         ContactoAgenda(nombre: "Antonio", telefono: "656 345 1234"),
         ContactoAgenda(nombre: "Ana", telefono: "656 098 0987"),
@@ -35,6 +37,10 @@ struct PantallaAgenda: View {
     
     var body: some View {
         ScrollView {
+            Text("Lista de Contactos")
+                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                .font(.title)
+                .foregroundStyle(.white)
             VStack(spacing: 10) {
                 /*ForEach(0...45, id: \.self){ _ in
                  Contacto_Preview()
@@ -107,6 +113,7 @@ struct PantallaAgenda: View {
                 mostrar_pantalla_agregar_contacto.toggle()
                 
             }
+                
             )
         }
     }
