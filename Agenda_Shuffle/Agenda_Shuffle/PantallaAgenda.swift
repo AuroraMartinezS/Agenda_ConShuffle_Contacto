@@ -15,13 +15,23 @@ let contactos = [
     ContactoAgenda(nombre: "Daniel", telefono: "656 098 0987"),
     ContactoAgenda(nombre: "Sofia", telefono: "656 098 3456"),
     ContactoAgenda(nombre: "Pepe", telefono: "656 123 3456"),
-    ContactoAgenda(nombre: "Karen", telefono: "656 345 1234")
+    ContactoAgenda(nombre: "Karen", telefono: "656 345 1234"),
+    ContactoAgenda(nombre: "Paola", telefono: "656 345 1234"),
+    ContactoAgenda(nombre: "Marco", telefono: "656 345 1234"),
+    ContactoAgenda(nombre: "Antonio", telefono: "656 345 1234")
 ]
 
 struct PantallaAgenda: View {
     var largo = UIScreen.main.bounds.width
     var ancho = UIScreen.main.bounds.height
     
+    @State var mostrar_pantalla_agregar_contacto: Bool = false;
+    @State var contactos_actuales: [ContactoAgenda] = [
+        ContactoAgenda(nombre: "Antonio", telefono: "656 345 1234"),
+        ContactoAgenda(nombre: "Ana", telefono: "656 098 0987"),
+        ContactoAgenda(nombre: "Juan", telefono: "656 098 0987"),
+        ContactoAgenda(nombre: "Daniel", telefono: "656 098 0987"),
+        ContactoAgenda(nombre: "Sofia", telefono: "656 098 3456")];
     
     var body: some View {
         ScrollView {
@@ -30,7 +40,7 @@ struct PantallaAgenda: View {
                  Contacto_Preview()
                  }
                  }*/
-                ForEach(contactos) { contacto in
+                ForEach(contactos_actuales) { contacto in
                     //Text("\(contacto.nombre)")
                     ContactoPrevista(contacto_a_mostrar: contacto, al_pulsar: {
                         print("Te envía un saludo \(contacto.nombre) desde la pantalla de agenda")
@@ -58,7 +68,8 @@ struct PantallaAgenda: View {
             }
             .padding(15)
             .onTapGesture {
-                print("Falta implementar esta parte")
+                print("Falta implementar la seccion de agregar contacto.")
+                mostrar_pantalla_agregar_contacto.toggle()
             }
             
             Spacer();
@@ -85,6 +96,18 @@ struct PantallaAgenda: View {
                 }*/
             //Image(systemName: "plus.circle.fill")
             
+        }.background(Color.purple)
+        .sheet(isPresented: $mostrar_pantalla_agregar_contacto){
+            Pantalla_Agregar_Contacto(boton_salir: {
+                mostrar_pantalla_agregar_contacto.toggle()
+            },
+                 boton_agregar: { nombre, numero in
+                let contacto_nuevo = ContactoAgenda(nombre: nombre, telefono: numero)
+                contactos_actuales.append(contacto_nuevo)
+                mostrar_pantalla_agregar_contacto.toggle()
+                
+            }
+            )
         }
     }
 }
