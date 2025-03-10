@@ -21,12 +21,22 @@ let contactos = [
     ContactoAgenda(nombre: "Antonio", telefono: "656 345 1234")
 ]
 
+enum PantallasDisponibles: String, Identifiable{ //NUEVO
+    case pantalla_agregar, pantalla_shuffle
+    
+    var id: String{rawValue}
+}
+
 struct PantallaAgenda: View {
     var largo = UIScreen.main.bounds.width
     var ancho = UIScreen.main.bounds.height
     
     @State var mostrar_pantalla_agregar_contacto: Bool = false;
     @State var mostrar_pantalla_shuffle: Bool = false;
+    
+    @State var pantalla_a_mostrar: PantallasDisponibles? //NUEVO
+    
+    @State private var contacto_seleccionado_shuffle: ContactoAgenda?
     
     @State var contactos_actuales: [ContactoAgenda] = [
         ContactoAgenda(nombre: "Antonio", telefono: "656 345 1234"),
@@ -40,7 +50,7 @@ struct PantallaAgenda: View {
             Text("Lista de Contactos")
                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 .font(.title)
-                .foregroundStyle(.white)
+                .foregroundStyle(.indigo)
             VStack(spacing: 10) {
                 /*ForEach(0...45, id: \.self){ _ in
                  Contacto_Preview()
@@ -55,27 +65,26 @@ struct PantallaAgenda: View {
                 }
             }
             .frame(alignment: Alignment.center)
-            .padding(10)
-            .background(Color.cyan)
-        }
-        .background(Color.indigo)
+            .padding(5)
+            .background(Color.white)
+        }.padding(20)
         
         HStack(alignment: VerticalAlignment.center, spacing: 25){
             ZStack{
                 Circle()
                     .frame(width: 100)
-                    .foregroundStyle(.orange)
+                    .foregroundStyle(.teal)
                 Circle()
                     .frame(width: 65, height: 65)
                     .foregroundStyle(.mint)
                 Image(systemName: "plus")
+                    .font(.system(size: 30))
                     .foregroundStyle(.indigo)
-                    //.offset(x: 0, y: -25)
             }
             .padding(15)
             .onTapGesture {
-                print("Falta implementar la seccion de agregar contacto.")
-                mostrar_pantalla_agregar_contacto.toggle()
+                /*mostrar_pantalla_agregar_contacto.toggle()*/
+                pantalla_a_mostrar = PantallasDisponibles.pantalla_agregar
             }
             
             Spacer();
@@ -83,27 +92,25 @@ struct PantallaAgenda: View {
             ZStack{
                 Circle()
                     .frame(width: 100)
-                    .foregroundStyle(.orange)
+                    .foregroundStyle(.teal)
                 Circle()
                     .frame(width: 65, height: 65)
                     .foregroundStyle(.mint)
                 Image(systemName: "shuffle")
+                    .font(.system(size: 30))
                     .foregroundStyle(.indigo)
-                    //.offset(x: 0, y: -25)
             }
             .padding(15)
             .onTapGesture {
-                print("Lanzar un intend para iniciar la llamada")
+                if let contacto = contactos_actuales.randomElement() {
+                    contacto_seleccionado_shuffle = contacto
+                    //mostrar_pantalla_shuffle.toggle()
+                    pantalla_a_mostrar = PantallasDisponibles.pantalla_shuffle
+                }
             }
             
-            /*Text("Obtener persona a molestar")
-                .onTapGesture {
-                    print("")
-                }*/
-            //Image(systemName: "plus.circle.fill")
-            
-        }.background(Color.purple)
-        .sheet(isPresented: $mostrar_pantalla_agregar_contacto){
+        }.background(Color.indigo)
+        /*.sheet(isPresented: $mostrar_pantalla_agregar_contacto){
             Pantalla_Agregar_Contacto(boton_salir: {
                 mostrar_pantalla_agregar_contacto.toggle()
             },
@@ -115,6 +122,31 @@ struct PantallaAgenda: View {
             }
                 
             )
+        }
+        .sheet(isPresented: $mostrar_pantalla_shuffle){
+            if let contacto = contacto_seleccionado_shuffle{
+                Pantalla_del_Ganador(contacto_a_molestar: contacto)
+            }
+        }*/
+        .sheet(item: $pantalla_a_mostrar){ pantalla in
+            switch (pantalla){
+            case .pantalla_agregar:
+                Pantalla_Agregar_Contacto(boton_salir: {
+                    mostrar_pantalla_agregar_contacto.toggle()
+                },
+                     boton_agregar: { nombre, numero, imagen_seleccionada in
+                    let contacto_nuevo = ContactoAgenda(nombre: nombre, telefono: numero, imagen: imagen_seleccionada)
+                    contactos_actuales.append(contacto_nuevo)
+                    pantalla_a_mostrar = nil
+                    
+                }
+                    
+                )
+            case .pantalla_shuffle:
+                if let contacto = contacto_seleccionado_shuffle{
+                    Pantalla_del_Ganador(contacto_a_molestar: contacto)
+                }
+            }
         }
     }
 }

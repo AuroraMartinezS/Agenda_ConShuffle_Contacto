@@ -18,26 +18,30 @@ struct Pantalla_del_Ganador: View {
             
             ZStack{
                 Circle().foregroundColor(Color.orange)
-                    .frame(width: 170)
+                    .frame(width: 200)
 
-                Icono(tamaño: 100, ruta_icono: "plus", padding: 10)
-                    .foregroundStyle(.indigo)
+                Image("PhotoCat")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 270, alignment: .center)
+                    .clipShape(Circle())
             }
             
             VStack{
                 Text(contacto_a_molestar.nombre)
-                    .font(.system(size: 30, weight: .heavy))
+                    .font(.system(size: 40, weight: .heavy))
+                    .foregroundStyle(.mint)
                 Text(contacto_a_molestar.telefono)
                     .font(.system(size: 20, weight: .regular))
+                    .foregroundStyle(.mint)
             }
-            
 
-            
         }
         .padding(40)
-        .background(Color.purple)
-        .clipShape(RoundedRectangle(cornerSize: esquinas_redondeadas))
+        .background(Color.indigo)
         
+        .clipShape(RoundedRectangle(cornerSize: esquinas_redondeadas))
+        .shadow(color: .black, radius: 10, x: 0, y: 5)
         
     }
 }

@@ -13,6 +13,8 @@ struct ContactoAgenda: Identifiable {
     var nombre: String
     var telefono: String
 
+    var imagen: String = "PhotoCat"
+    
     var id: String { nombre }
     
 }
