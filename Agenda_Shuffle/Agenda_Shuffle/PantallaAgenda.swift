@@ -43,31 +43,34 @@ struct PantallaAgenda: View {
         ContactoAgenda(nombre: "Ana", telefono: "656 098 0987"),
         ContactoAgenda(nombre: "Juan", telefono: "656 098 0987"),
         ContactoAgenda(nombre: "Daniel", telefono: "656 098 0987"),
-        ContactoAgenda(nombre: "Sofia", telefono: "656 098 3456")];
+        ContactoAgenda(nombre: "Sofia", telefono: "656 098 3456"),
+        ContactoAgenda(nombre: "Pepe", telefono: "656 091 1256")];
     
     var body: some View {
-        ScrollView {
-            Text("Lista de Contactos")
-                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                .font(.title)
-                .foregroundStyle(.indigo)
-            VStack(spacing: 10) {
-                /*ForEach(0...45, id: \.self){ _ in
-                 Contacto_Preview()
-                 }
-                 }*/
-                ForEach(contactos_actuales) { contacto in
-                    //Text("\(contacto.nombre)")
-                    ContactoPrevista(contacto_a_mostrar: contacto, al_pulsar: {
-                        print("Te envía un saludo \(contacto.nombre) desde la pantalla de agenda")
-                    })
-                    
+        NavigationStack{
+            ScrollView {
+                Text("Lista de Contactos")
+                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    .font(.largeTitle)
+                    .foregroundStyle(.indigo)
+                VStack(spacing: 10) {
+                    ForEach(contactos_actuales) { contacto in
+                        NavigationLink{
+                            Text("Hola Mundo")
+                        }label: {
+                            ContactoPrevista(contacto_a_mostrar: contacto, al_pulsar: {
+                                print("Te envía un saludo \(contacto.nombre) desde la pantalla de agenda")
+                            })
+                        }
+ 
+                    }
                 }
-            }
-            .frame(alignment: Alignment.center)
-            .padding(5)
-            .background(Color.white)
-        }.padding(20)
+                .frame(alignment: Alignment.center)
+                .padding(5)
+                .background(Color.white)
+            }.padding(20)
+        }
+
         
         HStack(alignment: VerticalAlignment.center, spacing: 25){
             ZStack{
@@ -76,7 +79,7 @@ struct PantallaAgenda: View {
                     .foregroundStyle(.teal)
                 Circle()
                     .frame(width: 65, height: 65)
-                    .foregroundStyle(.mint)
+                    .foregroundStyle(.mint.gradient)
                 Image(systemName: "plus")
                     .font(.system(size: 30))
                     .foregroundStyle(.indigo)
@@ -93,23 +96,21 @@ struct PantallaAgenda: View {
                 Circle()
                     .frame(width: 100)
                     .foregroundStyle(.teal)
+                    
                 Circle()
                     .frame(width: 65, height: 65)
-                    .foregroundStyle(.mint)
+                    .foregroundStyle(.mint.gradient)
                 Image(systemName: "shuffle")
                     .font(.system(size: 30))
                     .foregroundStyle(.indigo)
             }
             .padding(15)
             .onTapGesture {
-                if let contacto = contactos_actuales.randomElement() {
-                    contacto_seleccionado_shuffle = contacto
-                    //mostrar_pantalla_shuffle.toggle()
-                    pantalla_a_mostrar = PantallasDisponibles.pantalla_shuffle
-                }
+                pantalla_a_mostrar = PantallasDisponibles.pantalla_shuffle
+                
             }
             
-        }.background(Color.indigo)
+        }.background(Color.indigo.gradient)
         /*.sheet(isPresented: $mostrar_pantalla_agregar_contacto){
             Pantalla_Agregar_Contacto(boton_salir: {
                 mostrar_pantalla_agregar_contacto.toggle()
@@ -143,9 +144,8 @@ struct PantallaAgenda: View {
                     
                 )
             case .pantalla_shuffle:
-                if let contacto = contacto_seleccionado_shuffle{
-                    Pantalla_del_Ganador(contacto_a_molestar: contacto)
-                }
+                Pantalla_del_Ganador(contacto_a_molestar: contactos_actuales.randomElement()!)
+                
             }
         }
     }

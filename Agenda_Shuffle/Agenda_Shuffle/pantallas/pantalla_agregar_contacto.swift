@@ -12,6 +12,7 @@ struct Pantalla_Agregar_Contacto: View {
     @State private var numero_telefonico: String = ""
     @State private var imagen_seleccionada: String = "PhotoCat"
     
+    var color_letras = Color(red: 0.165, green: 0.255, blue: 0.4)
     let esquinas_redondeadas = CGSize(width: 10, height: 10)
     
     var boton_salir: () -> Void = {
@@ -31,7 +32,7 @@ struct Pantalla_Agregar_Contacto: View {
                 .padding(10)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.orange)
+                    .stroke(Color.indigo)
                 )
             
             Text("Colocar el campo del número telefónico")
@@ -39,12 +40,47 @@ struct Pantalla_Agregar_Contacto: View {
                 .padding(10)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.orange)
+                    .stroke(Color.indigo)
                 )
+            VStack{
+                Text("Escoge una imagen")
+            }
+            
+            HStack{
+                Image("PhotoCat")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 80)
+                    .clipShape(RoundedRectangle(cornerSize: esquinas_redondeadas))
+                    .shadow(color: .black, radius: 3, x: 0, y: 3)
+                    .onTapGesture {
+                        imagen_seleccionada = "PhotoCat"
+                    }
+                Image("Capibara")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 80)
+                    .shadow(color: .black, radius: 3, x: 0, y: 3)
+                    .clipShape(RoundedRectangle(cornerSize: esquinas_redondeadas))
+                    .onTapGesture {
+                        imagen_seleccionada = "Capibara"
+                    }
+                Image("Ave")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 80)
+                    .shadow(color: .black, radius: 3, x: 0, y: 3)
+                    .clipShape(RoundedRectangle(cornerSize: esquinas_redondeadas))
+                    .onTapGesture {
+                        imagen_seleccionada = "Ave"
+                    }
+                    
+                    
+            }.padding(10)
             
             HStack{
                 Icono(tamaño: 40, ruta_icono: "person.fill.badge.plus", padding: 10)
-                    .foregroundStyle(.indigo)
+                    .foregroundStyle(color_letras)
                     .background(Color.mint)
                     .clipShape(RoundedRectangle(cornerSize: esquinas_redondeadas))
                     .padding(10)
@@ -67,37 +103,6 @@ struct Pantalla_Agregar_Contacto: View {
             
         }.padding(30)
         
-        HStack{
-            Image("PhotoCat")
-                .resizable()
-                .scaledToFit()
-                .frame(height: 80)
-                .clipShape(RoundedRectangle(cornerSize: esquinas_redondeadas))
-                .shadow(color: .black, radius: 3, x: 0, y: 3)
-                .onTapGesture {
-                    imagen_seleccionada = "PhotoCat"
-                }
-            Image("Capibara")
-                .resizable()
-                .scaledToFit()
-                .frame(height: 80)
-                .shadow(color: .black, radius: 3, x: 0, y: 3)
-                .clipShape(RoundedRectangle(cornerSize: esquinas_redondeadas))
-                .onTapGesture {
-                    imagen_seleccionada = "Capibara"
-                }
-            Image("Ave")
-                .resizable()
-                .scaledToFit()
-                .frame(height: 80)
-                .shadow(color: .black, radius: 3, x: 0, y: 3)
-                .clipShape(RoundedRectangle(cornerSize: esquinas_redondeadas))
-                .onTapGesture {
-                    imagen_seleccionada = "Ave"
-                }
-                
-                
-        }
         
     }
 }
