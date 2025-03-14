@@ -42,18 +42,37 @@ struct Pantalla_del_Ganador: View {
                     .foregroundStyle(color_letras_tel)
             }
             
-            ZStack{
-                Circle()
-                    .frame(width: 100)
-                    .foregroundStyle(color_letras_nombre)
-                    
-                Circle()
-                    .frame(width: 80, height: 80)
-                    .foregroundStyle(.indigo.gradient)
-                Image(systemName: "phone.fill")
-                    .font(.system(size: 30))
-                    .foregroundStyle(.white)
+            HStack(alignment: VerticalAlignment.center, spacing: 30){
+                ZStack{
+                    Circle()
+                        .frame(width: 90)
+                        .foregroundStyle(color_letras_nombre)
+                        
+                    Circle()
+                        .frame(width: 70, height: 70)
+                        .foregroundStyle(.indigo.gradient)
+                    Image(systemName: "phone.fill")
+                        .font(.system(size: 30))
+                        .foregroundStyle(.white)
+                }
+                
+                
+                
+                ZStack{
+                    Circle()
+                        .frame(width: 90)
+                        .foregroundStyle(color_letras_nombre)
+                        
+                    Circle()
+                        .frame(width: 70, height: 70)
+                        .foregroundStyle(.indigo.gradient)
+                    Image(systemName: "message.fill")
+                        .font(.system(size: 30))
+                        .foregroundStyle(.white)
+                }
             }
+            
+            
             
         }
         .padding(40)
